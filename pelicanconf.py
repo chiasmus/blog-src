@@ -47,7 +47,5 @@ THEME = '/home/aj/Code/pelican-themes/pelican-svbhack'
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-# For deletion
-DELETE_OUTPUT_DIRECTORY = True
-OUTPUT_RETENTION = ('.hg')
-
+# Comments
+DISQUS_SITENAME = "astrohckr"

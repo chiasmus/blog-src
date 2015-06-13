@@ -108,7 +108,7 @@ github: publish
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 bitbucket: publish
-	cd $(OUTPUTDIR) && hg add . && hg commit -m "Published, `date`" && hg push
+	cd $(OUTPUTDIR) && hg addremove . && hg commit -m "Published, `date`" && hg push
 
 .PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
 
