@@ -3,9 +3,12 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'AJ'
-AUTHOR_BIO = u"writes code, prose."
-SITENAME = u"A not-quite outstanding blog name"
+TAGLINE = u"writes code, prose."
+
+SITENAME = u"In which a nerd writes stuff on the internet."
 SITEURL = ''
+
+USER_LOGO_URL = '/images/me.jpg'
 
 PATH = 'content'
 
@@ -24,12 +27,11 @@ AUTHOR_FEED_RSS = None
 LINKS = (('Code', 'https://bitbucket.org/astrohckr'),)
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('Twitter', 'https://twitter.com/astrohckr'),)
 
 DEFAULT_PAGINATION = 10
 
-THEME = '/home/aj/Code/pelican-themes/pelican-svbtle'
+THEME = '/home/aj/Code/pelican-themes/pelican-svbhack'
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = True
