@@ -1,3 +1,10 @@
 Title: About
 
-What's all this then?
+## Me
+
+I'm a boring nerd.
+
+## The Blog
+
+I'm trying to write more.
+

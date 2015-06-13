@@ -3,12 +3,13 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'AJ'
-SITENAME = u"I'm bad at names"
+AUTHOR_BIO = u"writes code, prose."
+SITENAME = u"A not-quite outstanding blog name"
 SITEURL = ''
 
 PATH = 'content'
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'America/Chicago'
 
 DEFAULT_LANG = u'en'
 
@@ -20,16 +21,15 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+LINKS = (('Code', 'https://bitbucket.org/astrohckr'),)
 
 # Social widget
 SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
 DEFAULT_PAGINATION = 10
+
+THEME = '/home/aj/Code/pelican-themes/pelican-svbtle'
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
