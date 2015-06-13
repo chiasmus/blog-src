@@ -1,6 +1,6 @@
 Title: About
 
-### The Nerd Responsible
+#### The Nerd Responsible
 
 I'm AJ, a software hacker currently trying to figure out where my Life is going, exactly. Day by day, I'm also learning to [let it go](https://www.youtube.com/watch?v=L0MK7qz13bU).
 
@@ -12,7 +12,7 @@ When I'm not writing code from the "comfort" of my [Arch Linux](https://archlinu
 
 Occasionally, I can also be found tinkering with hardware like the [Arduino](http://www.arduino.cc/) microcontrollers, [Google Cardboard](https://developers.google.com/cardboard/), [Leap Motion](http://leapmotion.com), and whatever electronics I get my hands on, basically.
 
-### This Site
+#### This Site
 
 Mainly, my goal here is to keep a repository of the things I hack around with, which at the moment seems to primarily involve wrestling with Linux OSes. 
 
