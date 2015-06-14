@@ -35,7 +35,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Code', 'https://bitbucket.org/astrohckr'),)
+LINKS = (('Github', 'https://github.com/astrohckr'),
+         ('Bitbucket', 'https://bitbucket.org/astrohckr'),)
 
 # Social widget
 SOCIAL = (('Twitter', 'https://twitter.com/astrohckr'),)
