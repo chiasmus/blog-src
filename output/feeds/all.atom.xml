@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>In which a nerd writes stuff on the internet.</title><link href="http://astrohckr.github.io/" rel="alternate"></link><link href="http://astrohckr.github.io/feeds/all.atom.xml" rel="self"></link><id>http://astrohckr.github.io/</id><updated>2015-06-13T18:50:31-05:00</updated><entry><title>Pelican-generated, Github-hosted</title><link href="http://astrohckr.github.io/posts/pelican-generated-github-hosted/" rel="alternate"></link><updated>2015-06-13T18:50:31-05:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2015-06-13:posts/pelican-generated-github-hosted/</id><summary type="html">&lt;p&gt;Since I primarily work in Python and mercurial-land now, I decided I might as well take this stuff out for a spin.&lt;/p&gt;
+&lt;p&gt;This site is now generated using &lt;a href="http://getpelican"&gt;Pelican&lt;/a&gt; and &lt;em&gt;still&lt;/em&gt; hosted on &lt;a href="http://pages.github.com"&gt;Github&lt;/a&gt; because the &lt;code&gt;index.html&lt;/code&gt; page won't update on Bitbucket. &lt;/p&gt;
+&lt;p&gt;I chose &lt;a href="https://github.com/gfidente/pelican-svbhack"&gt;svbhack&lt;/a&gt; as the theme because I'm a sucker for minimalist themes reminiscent of &lt;a href="http://svbtle.com"&gt;other&lt;/a&gt; publishing platforms.&lt;/p&gt;</summary><category term="site meta"></category><category term="pelican"></category><category term="python"></category><category term="github"></category></entry><entry><title>Chromebook Chronicles Part 2</title><link href="http://astrohckr.github.io/posts/chromebook-chronicles-part-2/" rel="alternate"></link><updated>2015-04-28T03:30:24-05:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2015-04-28:posts/chromebook-chronicles-part-2/</id><summary type="html">&lt;p&gt;I have been using the Acer C720 Chromebook as a linux laptop for a couple months now.&lt;/p&gt;
+&lt;h2&gt;SSD Upgrade&lt;/h2&gt;
+&lt;p&gt;While I'm fairly satisfied with the results, I would not recommend an SSD upgrade from MyDigitalSSD. I have had not 1, but 2 SSD failures from them. I am sadly, hardly alone in this problem.&lt;/p&gt;
+&lt;p&gt;At the moment, I'm trying out a 256GB Transcend SSD (model MTS400). Only time will tell whether this will be more reliable drive than the MyDigital.&lt;/p&gt;
+&lt;p&gt;Note: If considering the above, make sure to disable ALPM to resolve SATA power management errors. Read more &lt;a href="https://wiki.archlinux.org/index.php/Solid_State_Drives#Resolving_SATA_power_management_related_errors"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Linux&lt;/h2&gt;
+&lt;p&gt;While I've taken no less than 3 distributions for a spin (Ubuntu, eOS - aka elementary, Arch Linux), I always go back to &lt;a href="http://archlinux.org"&gt;Arch&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is mostly due to my being somewhat of a control freak when it comes to my computing choices. &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://elementary.io"&gt;eOS Freya&lt;/a&gt; is a polished, refined distribution, with &lt;a href="http://releases.ubuntu.com/14.04/"&gt;Ubuntu 14.04 LTS&lt;/a&gt; as its core underpinnings. I like, one can even say, love, that the eOS apps are visually consistent and lightweight. &lt;/p&gt;
+&lt;p&gt;With Arch, however, I can set up a fairly lightweight system even when using &lt;a href="https://wiki.archlinux.org/index.php/Cinnamon"&gt;Cinnamon&lt;/a&gt;. &lt;/p&gt;
+&lt;h2&gt;Installation&lt;/h2&gt;
+&lt;p&gt;If you're used to Arch, then installation is more or less the same here as it is in the &lt;a href="https://wiki.archlinux.org/index.php/Beginners%27_guide"&gt;Beginner's Guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;NOTE: Install &lt;code&gt;netctl&lt;/code&gt; on the &lt;code&gt;arch-chroot&lt;/code&gt; step. &lt;code&gt;wpa_supplicant&lt;/code&gt; version &lt;code&gt;2.4.1&lt;/code&gt; has a bug where you cannot authenticate with WPA, so I would recommend downloading &lt;code&gt;2.3.1&lt;/code&gt; from somewhere, like at the &lt;a href="http://seblu.net/a/arm/packages/w/wpa_supplicant/"&gt;Arch Rollback Machine&lt;/a&gt;, so install it manually.&lt;/p&gt;
+&lt;p&gt;You can simply download it to the chroot-ed system with &lt;code&gt;wget http://seblu.net/a/arm/packages/w/wpa_supplicant/wpa_supplicant-2.3-1-x86_64.pkg.tar.xz&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;And then install: &lt;code&gt;pacman -U wpa_supplicant-2.3-1-x86_64.pkg.tar.xz&lt;/code&gt;. &lt;/p&gt;
+&lt;h2&gt;Tweaks&lt;/h2&gt;
+&lt;p&gt;Here are the tweaks I made on setup:&lt;/p&gt;
+&lt;h3&gt;SSD optimization&lt;/h3&gt;
+&lt;p&gt;My &lt;code&gt;/etc/fstab&lt;/code&gt; looks more or less like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;/dev/sda1           /boot  ext2  defaults,relatime,stripe=4                 0 2
+/dev/sda2           /      ext4  defaults,noatime,discard,data=writeback    0 1
+/dev/mapper/home    /home  ext4  defaults,noatime,discard,data=ordered      0 2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;/dev/mapper/home&lt;/code&gt; maps to the encrypted &lt;code&gt;/home&lt;/code&gt; partition that I set up on installation.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;discard&lt;/code&gt; and &lt;code&gt;data&lt;/code&gt; in the options is to enable &lt;code&gt;TRIM&lt;/code&gt; on the SSD. &lt;/p&gt;
+&lt;h3&gt;Fixing suspend/resume&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://wiki.archlinux.org/index.php/Chrome_OS_devices#With_kernel_parameters"&gt;With kernel parameters&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As of this writing, kernel 4.0 hasn't yet reached &lt;code&gt;core&lt;/code&gt;, so I did have to add this to &lt;code&gt;/etc/default/grub&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;GRUB_CMDLINE_LINUX_DEFAULT=&amp;quot;tpm_tis.interrupts=0 modprobe.blacklist=ehci_pci&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;TLP for Power Management&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://wiki.archlinux.org/index.php/TLP"&gt;TLP&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I modified specific configurations in &lt;code&gt;/etc/default/tlp&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Here is one:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;DISK_IDLE_SECS_ON_AC=0
+DISK_IDLE_SECS_ON_BAT=0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;CPU Frequency:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;CPU_SCALING_GOVERNOR_ON_AC=performance
+CPU_SCALING_GOVERNOR_ON_BAT=ondemand
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;TO disable aggressive SATA powermanagement due to a bug in my SSD:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;SATA_LINKPWR_ON_AC=max_performance
+SATA_LINKPWR_ON_BAT=max_performance
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Touchpad&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://wiki.archlinux.org/index.php/Chrome_OS_devices#Chromium_OS_input_drivers"&gt;Chromium OS input drivers&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I installed &lt;a href="https://aur.archlinux.org/packages/xf86-input-cmt-xorg/"&gt;these&lt;/a&gt; input drivers rather than go with synaptics since it appears to work better.&lt;/p&gt;
+&lt;h3&gt;Modules&lt;/h3&gt;
+&lt;p&gt;The only real changes I've made is in &lt;code&gt;/etc/modprobe.d/ath9k.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;options ath9k btcoex_enable=1 bt_ant_diversity=1 ps_enable=0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This is to enable bluetooth and wifi coexistence.&lt;/p&gt;
+&lt;p&gt;Power saving can also be enabled by setting the &lt;code&gt;ps_enable=1&lt;/code&gt; flag, but according to the Arch wiki there are system freezes associated with that. &lt;/p&gt;
+&lt;h3&gt;zram&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://wiki.archlinux.org/index.php/Maximizing_performance#Zram_or_zswap"&gt;Zram or zswap setup&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.kernel.org/doc/Documentation/blockdev/zram.txt"&gt;zram&lt;/a&gt; is a kernel module with which you can replace swap partitions for faster performance. &lt;/p&gt;
+&lt;h3&gt;Preload&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://wiki.archlinux.org/index.php/Preload#Go-preload"&gt;Go-preload&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This was mostly to speed up performance for Firefox and Chrome, though lately I've been using Opera more as it seems far more lean than either Chrome or Firefox.&lt;/p&gt;
+&lt;h2&gt;That's it for now.&lt;/h2&gt;
+&lt;p&gt;Time will tell how well this setup will go. My next project is to do this on my rMBP, which currently is running Mavericks (due to Yosemite issues).&lt;/p&gt;</summary><category term="linux"></category><category term="chromebook"></category></entry><entry><title>Chromebook as Linux Ultrabook</title><link href="http://astrohckr.github.io/posts/chromebook-as-linux-ultrabook/" rel="alternate"></link><updated>2014-09-26T22:38:47-05:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2014-09-26:posts/chromebook-as-linux-ultrabook/</id><summary type="html">&lt;p&gt;I recently got an &lt;a href="http://us.acer.com/ac/en/US/content/series/c720"&gt;Acer C720&lt;/a&gt; Chromebook with the intention of using it as a sort of poor person's Macbook Air since I'm back to a college-student budget. And who can ever forget how obsessed I am with Linux?&lt;/p&gt;
+&lt;p&gt;"Don't you already have a fancy Macbook Pro with the fancy retina screen?", you may ask.&lt;/p&gt;
+&lt;p&gt;Well, yes, I do, but 95% of the time I do not need to lug around a 15-inch laptop. Plus, there's just something about an 11.6-inch laptop that's rather appealing (good things come in small packages?). &lt;/p&gt;
+&lt;p&gt;My (not so) little brother has one of these models, so I had the chance to play with it before purchasing one for myself. If you are particularly picky about the screen, I would not get this device as the display is pretty average (it's no IPS panel, that's for sure).&lt;/p&gt;
+&lt;h2&gt;Haswell&lt;/h2&gt;
+&lt;p&gt;One of the nifty things about this particular chromebook is that it ships with an Intel Haswell board, which means battery life is tremendous. My usage of this thing this past week has confirmed that the battery life is indeed ridiculously fantastic. &lt;/p&gt;
+&lt;p&gt;The Intel processor the Acer C720 ships with is the dual-core Celeron 2995U, which has made it more performant than many other Chromebook models which tend to ship with an ARM-based processor or a single-core processor.&lt;/p&gt;
+&lt;h2&gt;Upgrade the SSD&lt;/h2&gt;
+&lt;p&gt;The other nifty thing is that, with a bit of grit, you can swap the SSD with one with a bigger capacity with these &lt;a href="http://www.androidcentral.com/how-upgrade-ssd-your-acer-c720-chromebook"&gt;instructions&lt;/a&gt;. I ordered a 128 GB SSD from &lt;a href="http://www.amazon.com/MyDigitalSSD-Super-Cache-Solid-State/dp/B00EZ2E8NO/ref=sr_1_1/181-5627223-1975448?ie=UTF8&amp;amp;qid=1411791213&amp;amp;sr=8-1&amp;amp;keywords=MyDigitalSSD+SuperCache+2+SSD"&gt;MyDigitalSSD&lt;/a&gt;. I'll update this post once I receive it and swap out the SSD.&lt;/p&gt;
+&lt;p&gt;The RAM is sadly either 2GB or 4GB and cannot be upgraded since it's soldered onto the board. I got the 4GB model so that I can use this thing for some programming.&lt;/p&gt;
+&lt;h2&gt;Linux Setup&lt;/h2&gt;
+&lt;p&gt;Installing Linux on this model is really easy once you get it set up to Developer mode and enable the built-in SeaBIOS (should you decide to dual-boot or run only Linux). Read &lt;a href="http://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/acer-c720-chromebook"&gt;here&lt;/a&gt; for instructions.&lt;/p&gt;
+&lt;p&gt;Now normally I would load up my favorite distro, Arch Linux, on a laptop, but since I am too lazy to deal with the shenanigans the live installation media pulls for 64-bit installations (it causes the chromebook to just restart after trying to load the Live distribution), I went with &lt;a href="https://www.distroshare.com/distros/get/14/"&gt;this&lt;/a&gt; distribution based on the latest LTS Ubuntu 14.04 with the Xfce desktop environment. This distro is pre-configured to work out of the box for the Acer C720, so there is little to no fiddling with configs to make things work if your time is limited. Props to hugegreenbug for putting this together. &lt;/p&gt;
+&lt;p&gt;I am actually writing this post from the Xubuntu installation using the Xfce lightweight text editor "Mousepad", which I've never used before. &lt;/p&gt;
+&lt;h2&gt;TODO&lt;/h2&gt;
+&lt;p&gt;Once I receive the SSD replacement, I'll try and see if I can set up a real Rails development environment. I've successfully installed ruby 2.1.2 and whatever gems are required to get this jekyll blog running locally, but those are fairly thin applications.&lt;/p&gt;</summary><category term="linux"></category><category term="chromebook"></category></entry><entry><title>Site updates</title><link href="http://astrohckr.github.io/posts/site-updates/" rel="alternate"></link><updated>2014-09-04T21:42:24-05:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2014-09-04:posts/site-updates/</id><summary type="html">&lt;p&gt;I made some updates to this site:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Styling has been tweaked&lt;/li&gt;
+&lt;li&gt;Jekyll 2.3.0 is now being used&lt;/li&gt;
+&lt;li&gt;About page text updated&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The source can be checked out &lt;a href="https://github.com/hckr/hckr.github.io"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I'm still not entirely satisfied with how the pages look, but for the time being, it's good enough.&lt;/p&gt;</summary><category term="site meta"></category></entry><entry><title>Installing Arch Linux on a retina Macbook Pro</title><link href="http://astrohckr.github.io/posts/installing-arch-linux-on-a-retina-macbook-pro/" rel="alternate"></link><updated>2014-05-12T22:08:00-05:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2014-05-12:posts/installing-arch-linux-on-a-retina-macbook-pro/</id><summary type="html">&lt;p&gt;Over the past few months I have been secretly pining for the days I spent tinkering with my &lt;a href="https://archlinux.org"&gt;Arch Linux&lt;/a&gt; system, eagerly digging into configuration files and writing up my own scripts to deal with common tasks that are included in less neckbeard-y systems. &lt;/p&gt;
+&lt;p&gt;So sometime towards the last half of April, I decided to return to my neckbeard-y roots, OS X be damned (though I kept it for firmware updates and for Xcode, which we use at work for our iOS app), and wiped my 1st-gen retina Macbook Pro to start fresh.&lt;/p&gt;
+&lt;p&gt;(Though I do want to emphasize that OS X is not at all a terrible system to use as a developer. In fact, I consider it a very polished UNIX.)&lt;/p&gt;
+&lt;p&gt;Previous guides published on &lt;a href="https://vec.io/posts/use-arch-linux-and-xmonad-on-macbook-pro-with-retina-display"&gt;vec.io&lt;/a&gt; and &lt;a href="http://codylittlewood.com/arch-linux-on-macbook-pro-installation/"&gt;codelitt&lt;/a&gt; were immensely helpful in getting set up.&lt;/p&gt;
+&lt;p&gt;Overall, I found my experience with the install and configuration process far less painful than I remembered when I first tried loading a flavor of Linux on Apple Hardware (on my previous Macbook). Whether it is objectively less of a hassle than it was before, I can't say, but I found myself enjoying every step of the process (which I took as a sign that I was ready to go back to the Land of Linux).&lt;/p&gt;
+&lt;p&gt;(Perhaps I really am a masochist. I'm not sure.)&lt;/p&gt;
+&lt;p&gt;I documented as much of the process as I went so as to be able to reference my notes should I choose to repeat the setup rituals. I have published a guide based on my installation and configuration notes over at this &lt;a href="https://github.com/hckr/rmbp-setup-arch-linux"&gt;repo&lt;/a&gt; on how to install &lt;a href="https://archlinux.org"&gt;Arch Linux&lt;/a&gt; which I hope will ease the confusion in at least some aspects of the process.&lt;/p&gt;
+&lt;p&gt;I'll write more about the experience post-install in a future post, but for the moment here is an obligatory screenshot:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://i.imgur.com/atP8u4n.png"&gt;&lt;img src="http://i.imgur.com/atP8u4nl.png" /&gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="linux"></category><category term="apple"></category></entry><entry><title>Many Eggs, Many Baskets - Migrating from Google Apps (Part 1)</title><link href="http://astrohckr.github.io/posts/many-eggs-many-baskets-migrating-from-google-apps-part-1/" rel="alternate"></link><updated>2014-01-19T16:10:54-06:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2014-01-19:posts/many-eggs-many-baskets-migrating-from-google-apps-part-1/</id><summary type="html">&lt;p&gt;I've been meaning to migrate my rather complex email setup out of the silo of Google even before it was cool to do so (pre-NSA revelations, I mean). This weekend, I finally went ahead and begun the process.&lt;/p&gt;
+&lt;h2&gt;A list? A list.&lt;/h2&gt;
+&lt;p&gt;First, I had to compile a list of alternatives to the Google Services I'd been using. While there were certainly excellent alternatives that offered all the basic services I need (email, calendar/contacts), I wanted to avoid relying on one service alone for these things.&lt;/p&gt;
+&lt;p&gt;Here was the list of finalists:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Email: &lt;a href="https://fastmail.fm"&gt;Fastmail&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Calendar/Contacts Sync: &lt;a href="http://owncloud.org"&gt;OwnCloud&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Document Sync: &lt;a href="http://www.bittorrent.com/sync"&gt;Bittorrent Sync (btsync)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Simplifying my email setup&lt;/h2&gt;
+&lt;p&gt;Over the years, I've hoarded a lot of email addresses to which I directed specific pieces of information. I thought I was being clever by doing this, but as I get older, I'd rather not have to log on to several different gmail accounts to retrieve a password, to check up on my neopets that have been dying for 10 years, to store my plans for world domination, etc. &lt;/p&gt;
+&lt;h3&gt;Subdomain emails!&lt;/h3&gt;
+&lt;p&gt;I thought, "gee, I wish there was some way I could have subdomain emails like food@eatspam.myemail.com on the fly so I don't have to be annoyed with LinkedIn emails on my main inbox."&lt;/p&gt;
+&lt;p&gt;Well, it turns out that &lt;a href="https://www.fastmail.fm"&gt;Fastmail&lt;/a&gt; does this exact thing. The plus sign trick for Gmail (where you can have harry+poop@gmail.com point to harry@gmail.com) was cool, but this was even better.&lt;/p&gt;
+&lt;h3&gt;Rules rule and disposable addresses&lt;/h3&gt;
+&lt;p&gt;Instead of filters, Fastmail has rules. With the email subdomain thing I mentioned above, the amount of control you have over where certain types of emails go is incredible.&lt;/p&gt;
+&lt;p&gt;Let's say you go on a date that turns out rather poorly, but you want to give the person another chance and the fellow or lady asks you for your email address. Well, fear not, for you can give them an email like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;somewhat@nnoying.mycoolemail.com
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And if the second date turns out even worse than the first one, you can always set up a rule to delete emails received at that address automatically. You'll break your date's heart, but...&lt;/p&gt;
+&lt;p&gt;(I don't know where I'm going with this...)&lt;/p&gt;
+&lt;h3&gt;Aliases/Personalities&lt;/h3&gt;
+&lt;p&gt;The other cool thing you can do with Fastmail is having different personalities as would befit the situation. Since I am a person of a confusing array of online identities and am not clever enough to manage them all, this feature is killer.&lt;/p&gt;
+&lt;h2&gt;A more detailed guide...coming soon!&lt;/h2&gt;
+&lt;p&gt;I promise I'll post a more detailed guide as to the process I undertook to do this migration.&lt;/p&gt;
+&lt;p&gt;To be continued....&lt;/p&gt;</summary><category term="fastmail"></category><category term="google apps"></category></entry><entry><title>Updates to this blog</title><link href="http://astrohckr.github.io/posts/updates-to-this-blog/" rel="alternate"></link><updated>2014-01-18T13:06:06-06:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2014-01-18:posts/updates-to-this-blog/</id><summary type="html">&lt;p&gt;There were a couple things missing from the early iterations of this site. Tags didn't exist, the site header didn't look as cool (or useless, depending on your view). Now, however, that's changed.&lt;/p&gt;
+&lt;h2&gt;Github Pages, Jekyll, and Tagging&lt;/h2&gt;
+&lt;p&gt;Since I'm hosting these pages on &lt;em&gt;Github Pages&lt;/em&gt;, where &lt;code&gt;jekyll&lt;/code&gt; plugins are off by default, I had to eschew the use of plugins to get things to look and function the way I wanted them. This involved a combination of &lt;a href="https://github.com/hckr/hckr.github.io/blob/master/Rakefile"&gt;Rakefile&lt;/a&gt; wizardry and &lt;a href="https://github.com/hckr/hckr.github.io/blob/master/_includes/"&gt;liquid template hackery&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I scoured the interwebz and assembled bits and pieces into the monstrosity that is my &lt;code&gt;Rakefile&lt;/code&gt; for this site. Chief of these bits and pieces to be helpful was &lt;a href="https://gist.github.com/stammy/790778"&gt;this&lt;/a&gt; gist. &lt;/p&gt;
+&lt;p&gt;The caveats to this are that I had to create a custom &lt;code&gt;:build&lt;/code&gt; task to account for tag generation, which itself is a &lt;code&gt;Rake&lt;/code&gt; task I created. However, this is still much better than manually creating the pages myself.&lt;/p&gt;
+&lt;h2&gt;Line Numbers in Code Blocks&lt;/h2&gt;
+&lt;p&gt;I really wanted to get code blocks in here and not have to rely on Github gists (useful though they are) for snippets of code.&lt;/p&gt;
+&lt;p&gt;The Python syntax highlighter &lt;a href="http://pygments.org/"&gt;pygments&lt;/a&gt; is what's used by &lt;code&gt;jekyll&lt;/code&gt; to generate these nicely-formatted blocks of code. However, in order to have highlighting of syntax to work properly, there must be a stylesheet specifically for &lt;code&gt;pygments&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I based the syntax highlight css for this site on the &lt;a href="https://github.com/aahan/pygments-github-style/blob/master/jekyll-github.css"&gt;jekyll-github css&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To that end, I've added some customizations to how line blocks look in pages. &lt;/p&gt;
+&lt;p&gt;Look at this pretty little thing:&lt;/p&gt;
+&lt;p _="%" endhighlight="endhighlight"&gt;{% highlight ruby linenos=table %}
+def build_nice_thing(thing)
+    puts "WOW. Very meta. Such #{thing}."
+end&lt;/p&gt;
+&lt;h3&gt;Source and ending notes&lt;/h3&gt;
+&lt;p&gt;You can see the sexy behind-the-scenes action from the &lt;a href="https://github.com/hckr/hckr.github.io"&gt;source&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;Clearly, I've been spending more time hacking around with the code for this site than I have writing prose as I promised I would.&lt;/p&gt;</summary><category term="site meta"></category></entry><entry><title>Hello world</title><link href="http://astrohckr.github.io/posts/hello-world/" rel="alternate"></link><updated>2014-01-05T01:40:31-06:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2014-01-05:posts/hello-world/</id><summary type="html">&lt;p&gt;As a software engineer, I tend to relinquish writing prose in favor of code. Coding, after all, is itself a form of expression. You turn ideas into a language the computer can understand (through a series of translators, of course), and create virtual utilities seemingly out of thin air.&lt;/p&gt;
+&lt;p&gt;Writing prose or poetry is a similar endeavor, but instead of programs that run on computers, a writer's craft involves turning words into sights and sounds in the mind, into a world operating within the confines of imagination. &lt;/p&gt;
+&lt;p&gt;I intend for this blog to be both a record of what I learn in my field, and a way to express myself in the written word rather than code. &lt;/p&gt;
+&lt;p&gt;My words will hopefully translate to something meaningful to whoever may come across these texts, perhaps not as utilitarian as the code I produce.&lt;/p&gt;</summary><category term="site meta"></category></entry><entry><title>A Whole New Site</title><link href="http://astrohckr.github.io/posts/a-whole-new-site/" rel="alternate"></link><updated>2011-11-16T21:11:13-06:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2011-11-16:posts/a-whole-new-site/</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;site&lt;/li&gt;
+&lt;li&gt;development&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p class="intro"&gt;This site has gone through multiple incarnations in the past
+year. It's been more than 6 months since this site's inception and it's gotten
+more facelifts than an aging Hollywood dame.  &lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2&gt;A Brief History&lt;/h2&gt;
+&lt;p&gt;It began as a simple site to log my adventures in programming and in linux development and has since mutated to this monstrosity. &lt;/p&gt;
+&lt;p&gt;It started out as a Jekyll-generated static site, then morphed into its morally reprehensible alter-ego Hyde. Briefly, it was also a nanoc site. &lt;/p&gt;
+&lt;p&gt;Fortunately, the good doctor Jekyll has, unlike his novelistic counterpart, overcome the fragmentation of identity his alter ego threatens. &lt;/p&gt;
+&lt;h2&gt;Alpha Version&lt;/h2&gt;
+&lt;p&gt;This is really just an alpha version of this new design, but I needed something to put on my new domain. In the coming weeks, I intend to implement some new features.  &lt;/p&gt;
+&lt;h2&gt;Todo&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Related posts&lt;/li&gt;
+&lt;li&gt;Monthly archives&lt;/li&gt;
+&lt;li&gt;Yearly archives&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Candy is good for the soul&lt;/h2&gt;</summary></entry><entry><title>(Mis)perceptions About Linux</title><link href="http://astrohckr.github.io/posts/misperceptions-about-linux/" rel="alternate"></link><updated>2011-05-06T00:00:00-05:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2011-05-06:posts/misperceptions-about-linux/</id><summary type="html">&lt;p&gt;In a rather geeky conversation I had with my friends, the topic of Linux came up. Surprisingly the person who brought it up wasn't me. This person had an unpleasant experience with a linux distro in their computer science class, a sentiment which another friend of mine echoed regarding their experience with their computer science class. &lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;I find it unfortunate that the instructors of such courses do not seem to clarify that the flavour of linux they use to teach students is not representative of all linux distros. Without clarifying this they inadvertently turn off people less inclined to the technical aspects of computing to linux distributions in general. &lt;/p&gt;
+&lt;p&gt;We have a plethora of operating systems based on the linux kernel available in all sorts of configurations. Many of the most popular ones like Ubuntu, Linux Mint, have progressed to the point where installation is a graphical process that has been designed with new users in mind.  I feel that we have reached a point in linux development where we have so many choices that every demographic of users can find a linux os of choice. &lt;/p&gt;</summary></entry><entry><title>Troubleshooting Computer Problems</title><link href="http://astrohckr.github.io/posts/troubleshooting-computer-problems/" rel="alternate"></link><updated>2011-04-24T00:00:00-05:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2011-04-24:posts/troubleshooting-computer-problems/</id><summary type="html">&lt;p&gt;Yesterday, as I went my merry way tinkering with my computer as I usually do, I rebooted, only to see errors abound. Having only slept the minimal amount of sleep needed to stay alive, I grew impatient and nearly, in an impulsive move, reinstalled everything. &lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;But I stopped myself when it occurred to me just how much work had gone into configuring this system. I certainly hadn't the time to reconfigure &lt;em&gt;everything&lt;/em&gt;. The problem I'd encountered yesterday had happened once before, but rather than patiently figuring out what it was that caused the problem, and finding a remedy for it, I maniacally re-installed everything.&lt;/p&gt;
+&lt;p&gt;I blamed GNOME, harassed KDE, and worst of all, broke up with subtle wm. &lt;/p&gt;
+&lt;p&gt;I decided that wouldn't be the case &lt;em&gt;this&lt;/em&gt; time around.&lt;/p&gt;
+&lt;p&gt;So on I went in my ever so merry adventure of turning off daemons, changing configurations. It wasn't until I'd stumbled upon a couple of Arch bbs posts that I finally figured it all out. After reading through a wiki page, I found a solution. No reinstall necessary.&lt;/p&gt;
+&lt;h3&gt;"No space left on device"&lt;/h3&gt;
+&lt;p&gt;The problem was that when I had installed Arch, I neglected to read the part in the beginner's guide that went over partitioning. I didn't realize that 10GB apparently wasn't enough for a root partition, especially for my uses. &lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;/var&lt;/code&gt; directory was the culprit. It had filled up because I hadn't bothered clearing the cache folder pacman keeps. Just a simple command fixed my problems.&lt;/p&gt;
+&lt;pre&gt;pacman -Scc&lt;/pre&gt;
+
+&lt;p&gt;This started a cli prompt asking whether to clear the cache. &lt;/p&gt;
+&lt;p&gt;And all my (computer-related) problems were ameliorated. Now if I could only issue a command on myself to stop being so dramatic. &lt;/p&gt;
+&lt;pre&gt;/etc/rc.d/drama stop&lt;/pre&gt;
+
+&lt;p&gt;Wouldn't that be so easy? &lt;/p&gt;</summary></entry><entry><title>PKGBUILDs</title><link href="http://astrohckr.github.io/posts/pkgbuilds/" rel="alternate"></link><updated>2011-04-22T00:00:00-05:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2011-04-22:posts/pkgbuilds/</id><summary type="html">&lt;p&gt;After a few minutes of frustration trying to install &lt;a href="http://aur.archlinux.org/packages.php?ID=43266"&gt;indicator-appmenu&lt;/a&gt; from the AUR, I decided to update the PKGBUILD myself. This of course induced a strange PKGBUILD updating frenzy, so I uploaded everything to my &lt;a href="https://github.com/spo11/archlinux"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;h3&gt;What I've uploaded&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;indicator-applet&lt;/li&gt;
+&lt;li&gt;indicator-appmenu&lt;/li&gt;
+&lt;li&gt;indicator-messages&lt;/li&gt;
+&lt;li&gt;indicator-session&lt;/li&gt;
+&lt;li&gt;lo-menubar&lt;/li&gt;
+&lt;/ul&gt;</summary></entry><entry><title>My Linux Desktop</title><link href="http://astrohckr.github.io/posts/my-linux-desktop/" rel="alternate"></link><updated>2011-04-18T00:00:00-05:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2011-04-18:posts/my-linux-desktop/</id><summary type="html">&lt;p&gt;I am thoroughly obsessed with desktop customization. So obsessed am I, in fact, that I decided to install Arch Linux as my only operating system. It truly is a computer control freak's operating system as the base install consists of a console window and a package manager (called &lt;em&gt;pacman&lt;/em&gt;). Unlike some other distributions, Arch does not come pre-loaded with any desktop environment or window manager. You choose and installthese yourself. &lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;h3&gt;Differences between a window manager and a desktop environment&lt;/h3&gt;
+&lt;p&gt;A &lt;em&gt;window manager&lt;/em&gt; (WM) is just that: a program that manages your windows. There are two types of window managers: tiling ones, and floating ones. In a tiling one, you do not usually have the traditional titlebar, and can arrange the windows side by side without resizing it yourself.&lt;/p&gt;
+&lt;div class="picture left"&gt; &lt;img src="/images/gnome-2-32.png" width="250" alt="Not this one" /&gt;GNOME desktop&lt;/div&gt;
+
+&lt;p&gt;A &lt;em&gt;desktop environment&lt;/em&gt; (DE) is a set of applications and GUI tools. GNOME is an example of this in that it comes with a set of applications the developers decided were necessary. &lt;/p&gt;
+&lt;h3&gt;Going DE-less&lt;/h3&gt;
+&lt;p&gt;When I used Ubuntu, I never really used a lot of the applications that came with the GNOME desktop. So switching to Arch Linux gave me the freedom to go DE-less without messing up the system as I did when I attempted to go DE-less with a standard Ubuntu install (though it is possible to do that with ubuntu-minimal). &lt;/p&gt;
+&lt;div class="picture right"&gt;&lt;a href="/images/0408code.png" rel="lightbox"&gt;&lt;img src="/images/0408code.png" width="250" alt="Not this one" /&gt;&lt;/a&gt;My subtle desktop&lt;/div&gt;
+
+&lt;p&gt;Going DE-less meant having to set up a lot of things myself, which was fine with me. &lt;/p&gt;
+&lt;p&gt;For a WM, I went with a standalone, tiling WM called &lt;a href="http://subtle.subforge.org"&gt;&lt;em&gt;subtle&lt;/em&gt;&lt;/a&gt;. Subtle is configurable through a ruby file that sits in your &lt;code&gt;$XDG_CONFIG_HOME&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;I then installed some &lt;a href="https://wiki.archlinux.org/index.php/Lightweight_Applications"&gt;lightweight applications&lt;/a&gt;, many of which were command-line based or very light on system resources. &lt;/p&gt;
+&lt;h3&gt;Bottom line?&lt;/h3&gt;
+&lt;p&gt;Minimalism is awesome. &lt;/p&gt;</summary></entry><entry><title>New site</title><link href="http://astrohckr.github.io/posts/new-site/" rel="alternate"></link><updated>2011-04-17T00:00:00-05:00</updated><author><name>AJ</name></author><id>tag:astrohckr.github.io,2011-04-17:posts/new-site/</id><summary type="html">&lt;p&gt;As if I didn't have enough distractions with which to procrastinate, I started this site.I decided that my geeky interests needed some sort of place on earth so that I can up my geek cred by infinity. &lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;So here it is, a site managed using &lt;a href="https://github.com/mojombo/jekyll"&gt;Jekyll&lt;/a&gt;. No, not the Doctor Henry Jekyll of &lt;em&gt;The Strange Case of Dr Jekyll and Mr Hyde&lt;/em&gt; (though that would certainly be an interesting experience indeed, having a blog managed by a character representing the duality of the human spirit). I decided to run it on a &lt;em&gt;static website generator&lt;/em&gt; so that I won't have to worry about MySQL being hacked or some other sort of issue that accompanies a dynamic site.&lt;/p&gt;
+&lt;div class="picture left"&gt; &lt;img src="/images/Jekyllhyde.jpg" width="250" alt="Not this one" /&gt;No, not this one.&lt;/div&gt;
+
+&lt;h3&gt;My excuses&lt;/h3&gt;
+&lt;p&gt;I need to keep &lt;em&gt;Boredom&lt;/em&gt; at bay when I'm at school, and blogging/programming keeps the Boredom away. All work and no play causes me dismay. &lt;/p&gt;
+&lt;p&gt;(I felt like rhyming the previous line, okay?)&lt;/p&gt;</summary></entry></feed>

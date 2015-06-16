@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://astrohckr.github.io/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://astrohckr.github.io/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://astrohckr.github.io/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="AJ">
+  <meta name="description" content="Posts and writings by AJ">
+
+  <link href="http://astrohckr.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="In which a nerd writes stuff on the internet. Atom" />
+
+<meta name="keywords" content="">
+
+  <title>
+    In which a nerd writes stuff on the internet.
+&ndash; Troubleshooting Computer Problems  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://astrohckr.github.io">
+        <img src="/images/me.jpg" alt="logo">
+      </a>
+      <h2><a href="http://astrohckr.github.io">AJ</a></h2>
+      <p>writes code, prose.</p>
+      <ul>
+        <li><a href="http://astrohckr.github.io/about/">About</a></li>
+        <li><a href="https://github.com/astrohckr" target="_blank">Github</a></li>
+        <li><a href="https://bitbucket.org/astrohckr" target="_blank">Bitbucket</a></li>
+        <li><a href="https://twitter.com/astrohckr" target="_blank">Twitter</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://astrohckr.github.io">Index</a> &brvbar; <a href="http://astrohckr.github.io/archives.html">Archives</a>
+      &brvbar; <a href="http://astrohckr.github.io/feeds/all.atom.xml">Atom</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://astrohckr.github.io/posts/troubleshooting-computer-problems/">Troubleshooting Computer Problems</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Yesterday, as I went my merry way tinkering with my computer as I usually do, I rebooted, only to see errors abound. Having only slept the minimal amount of sleep needed to stay alive, I grew impatient and nearly, in an impulsive move, reinstalled everything. </p>
+<!--more-->
+
+<p>But I stopped myself when it occurred to me just how much work had gone into configuring this system. I certainly hadn't the time to reconfigure <em>everything</em>. The problem I'd encountered yesterday had happened once before, but rather than patiently figuring out what it was that caused the problem, and finding a remedy for it, I maniacally re-installed everything.</p>
+<p>I blamed GNOME, harassed KDE, and worst of all, broke up with subtle wm. </p>
+<p>I decided that wouldn't be the case <em>this</em> time around.</p>
+<p>So on I went in my ever so merry adventure of turning off daemons, changing configurations. It wasn't until I'd stumbled upon a couple of Arch bbs posts that I finally figured it all out. After reading through a wiki page, I found a solution. No reinstall necessary.</p>
+<h3>"No space left on device"</h3>
+<p>The problem was that when I had installed Arch, I neglected to read the part in the beginner's guide that went over partitioning. I didn't realize that 10GB apparently wasn't enough for a root partition, especially for my uses. </p>
+<p>The <code>/var</code> directory was the culprit. It had filled up because I hadn't bothered clearing the cache folder pacman keeps. Just a simple command fixed my problems.</p>
+<pre>pacman -Scc</pre>
+
+<p>This started a cli prompt asking whether to clear the cache. </p>
+<p>And all my (computer-related) problems were ameliorated. Now if I could only issue a command on myself to stop being so dramatic. </p>
+<pre>/etc/rc.d/drama stop</pre>
+
+<p>Wouldn't that be so easy? </p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Sun 24 April 2011</p>
+    <p>Category: <a href="http://astrohckr.github.io/category/posts.html">posts</a>
+    </p>
+  </div>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "posts/troubleshooting-computer-problems/";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = 'http://astrohckr.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; AJ. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+    </div>
+  </main>
+</body>
+</html>

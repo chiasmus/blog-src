@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://astrohckr.github.io/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://astrohckr.github.io/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://astrohckr.github.io/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="AJ">
+  <meta name="description" content="Posts and writings by AJ">
+
+  <link href="http://astrohckr.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="In which a nerd writes stuff on the internet. Atom" />
+
+<meta name="keywords" content="">
+
+  <title>
+    In which a nerd writes stuff on the internet.
+&ndash; My Linux Desktop  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://astrohckr.github.io">
+        <img src="/images/me.jpg" alt="logo">
+      </a>
+      <h2><a href="http://astrohckr.github.io">AJ</a></h2>
+      <p>writes code, prose.</p>
+      <ul>
+        <li><a href="http://astrohckr.github.io/about/">About</a></li>
+        <li><a href="https://github.com/astrohckr" target="_blank">Github</a></li>
+        <li><a href="https://bitbucket.org/astrohckr" target="_blank">Bitbucket</a></li>
+        <li><a href="https://twitter.com/astrohckr" target="_blank">Twitter</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://astrohckr.github.io">Index</a> &brvbar; <a href="http://astrohckr.github.io/archives.html">Archives</a>
+      &brvbar; <a href="http://astrohckr.github.io/feeds/all.atom.xml">Atom</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://astrohckr.github.io/posts/my-linux-desktop/">My Linux Desktop</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I am thoroughly obsessed with desktop customization. So obsessed am I, in fact, that I decided to install Arch Linux as my only operating system. It truly is a computer control freak's operating system as the base install consists of a console window and a package manager (called <em>pacman</em>). Unlike some other distributions, Arch does not come pre-loaded with any desktop environment or window manager. You choose and installthese yourself. </p>
+<!--more-->
+
+<h3>Differences between a window manager and a desktop environment</h3>
+<p>A <em>window manager</em> (WM) is just that: a program that manages your windows. There are two types of window managers: tiling ones, and floating ones. In a tiling one, you do not usually have the traditional titlebar, and can arrange the windows side by side without resizing it yourself.</p>
+<div class="picture left"> <img src="/images/gnome-2-32.png" width="250" alt="Not this one" />GNOME desktop</div>
+
+<p>A <em>desktop environment</em> (DE) is a set of applications and GUI tools. GNOME is an example of this in that it comes with a set of applications the developers decided were necessary. </p>
+<h3>Going DE-less</h3>
+<p>When I used Ubuntu, I never really used a lot of the applications that came with the GNOME desktop. So switching to Arch Linux gave me the freedom to go DE-less without messing up the system as I did when I attempted to go DE-less with a standard Ubuntu install (though it is possible to do that with ubuntu-minimal). </p>
+<div class="picture right"><a href="/images/0408code.png" rel="lightbox"><img src="/images/0408code.png" width="250" alt="Not this one" /></a>My subtle desktop</div>
+
+<p>Going DE-less meant having to set up a lot of things myself, which was fine with me. </p>
+<p>For a WM, I went with a standalone, tiling WM called <a href="http://subtle.subforge.org"><em>subtle</em></a>. Subtle is configurable through a ruby file that sits in your <code>$XDG_CONFIG_HOME</code>. </p>
+<p>I then installed some <a href="https://wiki.archlinux.org/index.php/Lightweight_Applications">lightweight applications</a>, many of which were command-line based or very light on system resources. </p>
+<h3>Bottom line?</h3>
+<p>Minimalism is awesome. </p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Mon 18 April 2011</p>
+    <p>Category: <a href="http://astrohckr.github.io/category/posts.html">posts</a>
+    </p>
+  </div>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "posts/my-linux-desktop/";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = 'http://astrohckr.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; AJ. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+    </div>
+  </main>
+</body>
+</html>
