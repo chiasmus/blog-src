@@ -20,12 +20,18 @@ DEFAULT_LANG = u'en'
 # Paths
 ARTICLE_URL = 'posts/{slug}/'
 ARTICLE_SAVE_AS = 'posts/{slug}/index.html'
-PAGE_URL = '{slug}/'
-PAGE_SAVE_AS = '{slug}/index.html'
-TAG_URL = 'tag/{slug}/'
-TAG_SAVE_AS = 'tag/{slug}/index.html'
+
 DRAFT_URL = 'drafts/{slug}/'
 DRAFT_SAVE_AS = 'drafts/{slug}/index.html'
+
+PAGE_URL = '{slug}/'
+PAGE_SAVE_AS = '{slug}/index.html'
+
+CATEGORIES_SAVE_AS = 'categories/index.html'
+
+TAG_URL = 'tag/{slug}/'
+TAG_SAVE_AS = 'tag/{slug}/index.html'
+TAGS_SAVE_AS = 'tags/index.html'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
