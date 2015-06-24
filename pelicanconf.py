@@ -49,7 +49,7 @@ SOCIAL = (('Twitter', 'https://twitter.com/astrohckr'),)
 
 DEFAULT_PAGINATION = 10
 
-# THEME = '/home/aj/Code/pelican-themes/pelican-svbhack'
+THEME = 'template'
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
