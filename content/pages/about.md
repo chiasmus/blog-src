@@ -16,3 +16,6 @@ Occasionally, I can also be found tinkering with hardware like the [Arduino](htt
 
 Mainly, my goal here is to keep a repository of the things I hack around with, which at the moment seems to primarily involve wrestling with Linux OSes. 
 
+#### Testing
+
+I wonder if this will trigger a build.
