@@ -40,13 +40,6 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = (('Github', 'https://github.com/astrohckr'),
-         ('Bitbucket', 'https://bitbucket.org/astrohckr'),)
-
-# Social widget
-SOCIAL = (('Twitter', 'https://twitter.com/astrohckr'),)
-
 DEFAULT_PAGINATION = 10
 
 THEME = 'template'
@@ -56,3 +49,18 @@ RELATIVE_URLS = True
 
 # Comments
 DISQUS_SITENAME = "astrohckr"
+
+# Plugins
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ['read_more_link']
+
+
+# This settings indicates that you want to create summary at a certain length
+SUMMARY_MAX_LENGTH = 50
+
+# This indicates what goes inside the read more link
+READ_MORE_LINK = 'Continue reading'
+
+# This is the format of the read more link
+READ_MORE_LINK_FORMAT = '<p><a class="read-more" href="/{url}">{text} &rarr;</a></p>'
+
