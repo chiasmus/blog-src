@@ -42,7 +42,7 @@ AUTHOR_FEED_RSS = None
 
 DEFAULT_PAGINATION = 10
 
-THEME = 'template'
+THEME = 'theme'
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
@@ -53,6 +53,8 @@ DISQUS_SITENAME = "astrohckr"
 # Plugins
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['read_more_link', 'extract_toc']
+
+# Markdown
 MD_EXTENSIONS = (['toc'])
 
 # This settings indicates that you want to create summary at a certain length
