@@ -52,8 +52,8 @@ DISQUS_SITENAME = "astrohckr"
 
 # Plugins
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['read_more_link']
-
+PLUGINS = ['read_more_link', 'extract_toc']
+MD_EXTENSIONS = (['toc'])
 
 # This settings indicates that you want to create summary at a certain length
 SUMMARY_MAX_LENGTH = 50
