@@ -1,0 +1,7 @@
+pelican:
+  build: .
+  command: make serve
+  ports:
+    - "8000:8000"
+  volumes:
+    - .:/blog
