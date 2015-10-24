@@ -1,3 +1,6 @@
 [submodule "output"]
 	path = output
 	url = git@github.com:chiasmus/chiasmus.github.io
+[submodule "theme"]
+	path = theme
+	url = git@github.com:chiasmus/nest.git
