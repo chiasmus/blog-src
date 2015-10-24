@@ -1,9 +1,20 @@
-# Welcome to my twisted mind
+## Setup
 
-I'm not sure why I wrote that header.
+First, clone this repo.
 
-Anyway, this is the repo for my [pelican](http://getpelican.com)-powered blog
-on [this here](http://ajwrit.es) site.
+```
+git clone git@github.com:chiasmus/blog-src.git
+```
+
+From within wherever you cloned `blog-src`:
+
+```
+cd /path/to/blog-src
+git submodule init
+git submodule update
+```
+
+This will setup the `output` folder.
 
 ## Docker
 
