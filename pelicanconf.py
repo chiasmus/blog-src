@@ -2,14 +2,12 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'AJ'
-TAGLINE = u"writes code, prose."
-
-SITENAME = u"In which a nerd writes stuff on the internet."
+AUTHOR = u'Chiasmus Crew'
+SITENAME = u"Chiasmus"
 SITEURL = ''
-
-# Hur hurr totally my face
-USER_LOGO_URL = '/images/me.jpg'
+SITESUBTITLE = u'Curiousity.'
+NEST_HEADER_IMAGES = ''
+NEST_HEADER_LOGO = '/images/logo.png'
 
 PATH = 'content'
 
@@ -65,4 +63,3 @@ READ_MORE_LINK = 'Continue reading'
 
 # This is the format of the read more link
 READ_MORE_LINK_FORMAT = '<p><a class="read-more" href="/{url}">{text} &rarr;</a></p>'
-
