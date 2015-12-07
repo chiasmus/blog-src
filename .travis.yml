@@ -4,6 +4,8 @@ language: python
 python: "2.7"
 install:
   - pip install -r requirements.txt
+  - git config user.name "chiasmus"
+  - git config user.email "us@chiasmus.org"
   - git submodule init
   - git submodule update
 script:
