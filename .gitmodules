@@ -3,5 +3,4 @@
 	url = https://github.com/chiasmus/chiasmus.github.io.git
 [submodule "theme"]
 	path = theme
-	url = git@github.com:chiasmus/nest.git
 	url = https://github.com/chiasmus/nest.git
