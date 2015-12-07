@@ -5,9 +5,9 @@ python: "2.7"
 install:
   - pip install -r requirements.txt
   - git config submodule.output.url https://github.com/chiasmus/chiasmus.github.io
-  - git config submodule.theme.url
+  - git config submodule.theme.url https://github.com/chiasmus/nest
   - git submodule init
-  - git submodule update https://github.com/chiasmus/nest
+  - git submodule update
 script:
   - make html
   - cd output
