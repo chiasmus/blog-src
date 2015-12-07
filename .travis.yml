@@ -12,3 +12,4 @@ script:
   - git add .
   - git commit -m 'Updated output'
   - git push https://$ACCESS_TOKEN@github.com/chiasmus/chiasmus.github.io
+  - cd ..
