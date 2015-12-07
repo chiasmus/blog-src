@@ -1,0 +1,14 @@
+branches:
+  only: master
+language: python
+python: "2.7"
+install:
+  - pip install -r requirements.txt
+  - git submodule init
+  - git submodule update
+script:
+  - make html
+  - cd output
+  - git add .
+  - git commit -m 'Updated output'
+  - git push https://$ACCESS_TOKEN@github.com/chiasmus/chiasmus.github.io
