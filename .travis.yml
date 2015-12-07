@@ -4,8 +4,10 @@ language: python
 python: "2.7"
 install:
   - pip install -r requirements.txt
+  - git config submodule.output.url https://github.com/chiasmus/chiasmus.github.io
+  - git config submodule.theme.url
   - git submodule init
-  - git submodule update
+  - git submodule update https://github.com/chiasmus/nest
 script:
   - make html
   - cd output
