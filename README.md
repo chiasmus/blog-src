@@ -46,11 +46,25 @@ git submodule update
 
 This will setup the `output` folder.
 
-## Docker
+## Docker setup on OS X
 
 This thing here is Dockerized, a term here meaning you can use `pelican` from
 within a `docker` container. If these words in that particular configuration
 made little sense, please read the [Docker docs](https://docs.docker.com).
+
+1. Download and install Docker Toolbox [here](https://www.docker.com/docker-toolbox).
+
+2. Then migrate from `boot2docker` to `docker-machine` [here](https://docs.docker.com/machine/migrate-to-machine/). I think this step is already handled by installing Docker Toolbox though.
+
+3. In a terminal, run this:
+
+```sh
+$ sh -c "$(curl -fsSL https://gist.githubusercontent.com/astrohckr/0d5303b787a449cd564f/raw/install.sh)"
+```
+
+4. Reboot your computer.
+
+5. Open up a Terminal or iTerm window or tab. You'll then be prompted for your password; this is so we can map whatever IP `docker` is running on to `docker.local`.
 
 ## Local Development
 
